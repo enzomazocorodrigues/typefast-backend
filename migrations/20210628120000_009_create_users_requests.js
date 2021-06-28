@@ -3,7 +3,7 @@ exports.up = function (knex, Promise) {
     table.uuid('id').primary().notNull()
     table.uuid('idPai').references('id')
       .inTable('users').notNull()
-    table.integer('idUsuario').references('id')
+    table.uuid('idUsuario').references('id')
       .inTable('users').notNull()
     table.datetime('dataPedido').notNull()
     table.datetime('dataResposta')

@@ -2,7 +2,10 @@ const { db } = require('./.env');
 
 module.exports = {
     client: 'pg',
-    connection: db,
+    connection: { 
+      ...db,
+      ssl: { rejectUnauthorized: false },
+    },
     pool: {
       //?e confirmar valores
       min: 2,

@@ -3,8 +3,8 @@ exports.up = function (knex, Promise) {
     table.increments('id').primary().notNull()
     table.integer('idPai').references('id').inTable('statusGroups').notNull()
     table.integer('ordem').notNull()
-    table.integer('idStatusDe').references('id').inTable('status').notNull()
-    table.integer('idStatusPara').references('id').inTable('status').notNull()
+    table.integer('idEstadoDe').references('id').inTable('status').notNull()
+    table.integer('idEstadoPara').references('id').inTable('status').notNull()
     table.boolean('default').defaultTo(false).notNull()
   })
 };

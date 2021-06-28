@@ -11,10 +11,10 @@ exports.seed = function(knex) {
     .then(function () {
       // Inserts seed entries
       return knex('users_passwords').insert({
-        id: 1,
-        idParent: "bf7bafe3-5059-4a96-89b2-bc405ea7cd12",
-        date: new Date().toISOString(),
-        password: encryptPassword("enzo1234")
+        idPai: "bf7bafe3-5059-4a96-89b2-bc405ea7cd12",
+        idTipo: 5,
+        data: new Date().toISOString(),
+        senha: encryptPassword("enzo1234")
       });
     });
 };

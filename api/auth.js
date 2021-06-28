@@ -60,7 +60,7 @@ module.exports = app => {
       .select('senha')
       .where({ idPai: existentUser.id })
       .first()
-      .then(res => res.password)
+      .then(senha => senha.senha)
 
       const match = await bcryptjs.compare(signIn.senha, existentUser.senha)
       existsOrError(match, 'E-mail ou senha inválidos.')

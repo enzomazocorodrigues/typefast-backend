@@ -1,12 +1,12 @@
 exports.up = function (knex, Promise) {
-  return knex.schema.createTable('games_phrases', table => {
+  return knex.schema.createTable('games_requests', table => {
     table.increments('id').primary().notNull()
     table.uuid('idPai').references('id')
       .inTable('games').notNull()
     table.datetime('data').notNull()
-    table.integer('idDesafiador').references('id')
+    table.uuid('idDesafiador').references('id')
       .inTable('users').notNull()
-    table.integer('idDesafiado').references('id')
+    table.uuid('idDesafiado').references('id')
       .inTable('users').notNull()
     table.datetime('dataResposta')
     table.boolean('aceito')
@@ -14,8 +14,8 @@ exports.up = function (knex, Promise) {
 };
 
 exports.down = function (knex, Promise) {
-  return knex.schema.dropTable('games_phrases')
+  return knex.schema.dropTable('games_requests')
 };
 
-// truncate table "games_phrases" restart identity;
-// select * from "games_phrases" order by id asc;
+// truncate table "games_requests" restart identity;
+// select * from "games_requests" order by id asc;

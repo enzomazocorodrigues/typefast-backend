@@ -5,8 +5,8 @@ exports.seed = function(knex) {
     .then(function () {
       // Inserts seed entries
       return knex('statusGroups').insert([
-        { id: 1, name: "sgDefault" },
-        { id: 2, name: "sgGame" },
+        { id: 1, nome: "sgDefault" },
+        { id: 2, nome: "sgGame" },
       ]);
     });
 };

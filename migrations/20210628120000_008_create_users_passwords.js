@@ -4,7 +4,7 @@ exports.up = function (knex, Promise) {
     table.uuid('idPai').references('id')
       .inTable('users').notNull()
     table.integer('idTipo').references('id')
-      .inTable('types').notNull()
+      .inTable('types_items').notNull()
     table.datetime('data').notNull()
     table.string('senha').notNull()
     table.datetime('codigoVerificacao')

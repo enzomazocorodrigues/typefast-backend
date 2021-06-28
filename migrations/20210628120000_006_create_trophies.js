@@ -1,5 +1,5 @@
 exports.up = function (knex, Promise) {
-  return knex.schema.createTable('games', table => {
+  return knex.schema.createTable('trophies', table => {
     table.uuid('id').primary().notNull()
     table.integer('idEstado').references('id')
       .inTable('status').notNull()
@@ -13,8 +13,8 @@ exports.up = function (knex, Promise) {
 };
 
 exports.down = function (knex, Promise) {
-  return knex.schema.dropTable('games')
+  return knex.schema.dropTable('trophies')
 };
 
-// truncate table "games" restart identity;
-// select * from "games" order by id asc;
+// truncate table "trophies" restart identity;
+// select * from "trophies" order by id asc;

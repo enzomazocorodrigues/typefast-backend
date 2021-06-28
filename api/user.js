@@ -11,16 +11,16 @@ module.exports = app => {
 
 		app.db('users')
 			.where(function () {
-				this.whereRaw('unaccent(nome) ilike unaccent(?)', [`%${search}%`])
-					.orWhereRaw('unaccent(email) ilike unaccent(?)', [`%${search}%`])
-					.orWhere('a.id', id);
+				!search || this.where('nome', search)
+					.orWhere('email', search)
+					.orWhere('id', id);
 			})
-			.andWhere('a.susp', false)
-			.orderBy('a.name', 'asc')
-			.then(user => res.status(200).send([...user]))
+			.andWhere('susp', false)
+			.orderBy('nome', 'asc')
+			.then(users => {
+				res.status(200).json([...users])
+			})
 			.then(err => res.status(400).send(err))
-			// .offset()
-			// .limit();
 	}
 
   /// GETBYID
@@ -41,7 +41,7 @@ module.exports = app => {
   const fnSave = async user => {
     try {
 			existsOrError(user.idEstado, 'Estado não informado.')
-			existsOrError(user.name, 'Nome não informado.')
+			existsOrError(user.nome, 'Nome não informado.')
 			existsOrError(user.email, 'Email não informado.')
 
 			const registeredEmail = await app.db('users')

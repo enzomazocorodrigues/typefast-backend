@@ -10,6 +10,9 @@ exports.seed = function(knex) {
         { id: 2, idPai: 1, nome: "alterado", nomeAlt: "alterar", ordem: 2, default: false, filtro: null, observacoes: null },
         { id: 3, idPai: 1, nomeAlt: "deletar", ordem: 3, default: false, nome: "deletado", filtro: null, observacoes: null },
         { id: 4, idPai: 1, nome: "recuperado", nomeAlt: "recuperar", ordem: 4, default: false, filtro: null, observacoes: null },
+        { id: 5, idPai: 2, nome: "Type Fast", nomeAlt: "Plataforma", ordem: 4, default: false, filtro: null, observacoes: null },
+        { id: 6, idPai: 2, nome: "Google Account", nomeAlt: "Google", ordem: 4, default: false, filtro: null, observacoes: null },
+        { id: 7, idPai: 2, nome: "Facebook Login", nomeAlt: "Facebook", ordem: 4, default: false, filtro: null, observacoes: null },
       ]);
     });
 };

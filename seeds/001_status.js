@@ -6,12 +6,12 @@ exports.seed = function(knex) {
     .then(function () {
       // Inserts seed entries
       return knex('status').insert([
-        { id: 0, susp: false, nome: 'deletado', action: 'deletar' },
-        { id: 1, susp: false, nome: 'cadastro', action: 'cadastrar' },
-        { id: 2, susp: false, nome: 'ativo', action: 'ativar' },
-        { id: 3, susp: false, nome: 'desativo', action: 'desativar' },
-        { id: 11, susp: false, nome: 'em análise', action: 'analisar' },
-        { id: 12, susp: false, nome: 'disponível', action: 'disponibilizar' },
+        { id: 0, susp: false, nome: 'deletado', evento: 'deletar' },
+        { id: 1, susp: false, nome: 'cadastro', evento: 'cadastrar' },
+        { id: 2, susp: false, nome: 'ativo', evento: 'ativar' },
+        { id: 3, susp: false, nome: 'desativo', evento: 'desativar' },
+        { id: 11, susp: false, nome: 'em análise', evento: 'analisar' },
+        { id: 12, susp: false, nome: 'disponível', evento: 'disponibilizar' },
       ]);
     });
 };
