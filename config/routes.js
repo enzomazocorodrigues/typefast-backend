@@ -10,11 +10,19 @@ module.exports = app => {
 		.post(app.api.user.save)
 
 	app.route('/users/:search/:idFilter')
-		.all(app.config.passport.authenticate())
 		.get(app.api.user.get)
 
 	app.route('/users/:id')
-		.all(app.config.passport.authenticate())
 		.get(app.api.user.getById)
+		.all(app.config.passport.authenticate())
 		.delete(app.api.user.remove)
+
+	app.route('/games/autocomplete/:search')
+		.get(app.api.game.autocomplete)
+
+	app.route('/games/:id/:idFilter')
+		.get(app.api.game.get)
+
+	app.route('/games/:id')
+		.get(app.api.game.getById)
 }

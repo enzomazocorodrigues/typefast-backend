@@ -12,7 +12,7 @@ exports.up = function (knex, Promise) {
 };
 
 exports.down = function (knex, Promise) {
-  return knex.schema.dropTable('games_rankings')
+  return knex.schema.dropTable('games_  rankings')
 };
 
 // truncate table "games_rankings" restart identity;

@@ -28,10 +28,12 @@ module.exports = app => {
       signUp.senha = encryptPassword(signUp.password)
       
       const user = {
-        idEstado: 1,
-        nome: signUp.nome,
-        email: signUp.email,
-        passwords: [{ date: new Date().toISOString().substring(0, 10), password: signUp.password }]
+        user: {
+          idEstado: 1,
+          nome: signUp.nome,
+          email: signUp.email,
+          passwords: [{ date: new Date().toISOString().substring(0, 10), password: signUp.password }]
+        }
       }
 
       await fnUserSave(user)
@@ -57,17 +59,15 @@ module.exports = app => {
       existsOrError(existentUser, 'E-mail ou senha inválidos.')
 
       existentUser.senha = await app.db('users_passwords')
-      .select('senha')
-      .where({ idPai: existentUser.id })
-      .first()
-      .then(senha => senha.senha)
+        .select('senha')
+        .where({ idPai: existentUser.id })
+        .first()
+        .then(senha => senha.senha)
 
       const match = await bcryptjs.compare(signIn.senha, existentUser.senha)
       existsOrError(match, 'E-mail ou senha inválidos.')
-      console.log(match)
       
       const user = await fnUserGetById(existentUser.id)
-      console.log(user)
 
       const now = Math.floor(Date.now() / 1000)
       const metadata = {
@@ -78,7 +78,7 @@ module.exports = app => {
 
       const payload = { 
         metadata,
-        user
+        ...user
       }
 
       payload.metadata.token = jwt.encode(payload, authSecret)

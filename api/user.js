@@ -32,7 +32,9 @@ module.exports = app => {
 			.where({ id })
 			.first()
 
-			return { ...user }
+			const result = { user	}
+
+			return result
 		} catch(err) {
 			return err
 		}
@@ -40,22 +42,22 @@ module.exports = app => {
 
   const fnSave = async user => {
     try {
-			existsOrError(user.idEstado, 'Estado não informado.')
-			existsOrError(user.nome, 'Nome não informado.')
-			existsOrError(user.email, 'Email não informado.')
+			existsOrError(user.user.idEstado, 'Estado não informado.')
+			existsOrError(user.user.nome, 'Nome não informado.')
+			existsOrError(user.user.email, 'Email não informado.')
 
 			const registeredEmail = await app.db('users')
-				.where({ email: user.email, nome: user.nome })
+				.where({ email: user.user.email, nome: user.user.nome })
 				.andWhere(function () {
-					!user.id || this.andWhere('id', '!=', user.id)
+					!user.user.id || this.andWhere('id', '!=', user.user.id)
 				})
 				.first()
 
-			user.id = await syncObject(user.id, user, 7)
+			user.user.id = await syncObject(user.user.id, user.user, 7)
 
 			notExistsOrError(registeredEmail, 'Email já cadastrado.')
 
-			user = await fnGetById(user.id)
+			user.user = await fnGetById(user.user.id)
       
 			return user
     } catch(err) {
