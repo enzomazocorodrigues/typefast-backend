@@ -3,9 +3,11 @@ exports.up = function (knex, Promise) {
     table.increments('id').primary().notNull()
     table.uuid('idPai').references('id')
       .inTable('games').notNull()
+    table.uuid('idUsuario').references('id')
+      .inTable('users').notNull()
     table.text('idSession') //? revisar
     table.datetime('data').notNull()
-    table.time('tempo').notNull()
+    table.decimal('tempo', 5, 2).notNull()
     table.integer('pontos').notNull()
     table.decimal('avaliacao', 2, 1)
   })

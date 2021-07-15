@@ -53,9 +53,10 @@ module.exports = app => {
 				})
 				.first()
 
+			notExistsOrError(registeredEmail, 'Email já cadastrado.')
+			
 			user.user.id = await syncObject(user.user.id, user.user, 7)
 
-			notExistsOrError(registeredEmail, 'Email já cadastrado.')
 
 			user.user = await fnGetById(user.user.id)
       
