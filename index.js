@@ -22,8 +22,7 @@ consign()
   .then('./config/routes.js')
   .into(app);
 
-const PORT =  process.env.NODE_ENV ? 0 : 3000
+const PORT = process.env.PORT || 3000
 const HOST = '0.0.0.0'
-process.
 
 app.listen(PORT, HOST, () => console.log(`Server listening on port ${PORT}`))
