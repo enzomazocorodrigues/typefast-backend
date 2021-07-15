@@ -4,10 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -L index.js",
-    "latest": "knex migrate:latest",
-    "rollback": "knex migrate:rollback --all",
-    "seed": "knex seed:run"
+    "start": "node index.js",
+    "dev": "nodemon -L index.js"
   },
   "keywords": [],
   "author": "",
