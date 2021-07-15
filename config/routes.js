@@ -1,4 +1,7 @@
 module.exports = app => {
+	app.route('/')
+		.get((req, res) => res.send({ msg: 'Connected to Type Fast backend' }))
+
 	app.route('/signin')
 		.post(app.api.auth.signin)
 
