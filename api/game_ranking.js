@@ -51,9 +51,9 @@ module.exports = app => {
 		
 		game_ranking.game_ranking.id = await syncChildObject(game_ranking.game_ranking.idPai, game_ranking.game_ranking, 15)
 
-		const res = fnGet(game_ranking.game_ranking.idPai, game_ranking.metatdata.idUsuario)
+		const ret = fnGet(game_ranking.game_ranking.idPai, game_ranking.metatdata.idUsuario)
 
-		res.status(200).json(res)
+		res.status(200).json(ret)
 	}
 
   return { getById, save }
